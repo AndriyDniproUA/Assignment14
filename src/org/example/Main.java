@@ -33,10 +33,11 @@ public class Main {
 
                 if (file.getName().toLowerCase().equals(fileName.toLowerCase()) && result == null) {
                     result = file.getAbsoluteFile();
-                    return result;
+                    //return result;
                 }
                 if (file.isDirectory() && result == null) {
                     result = findAbsoluteFile(file, fileName);
+                    if (result !=null) return result;
                 }
             }
 
