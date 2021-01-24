@@ -22,8 +22,6 @@ public class Main {
         }
     }
 
-    //TODO МЕТОД ПРОДОЛЖАЕТ ПЕРЕБИРАТЬ ПАПКУ ДАЖЕ ПОСЛЕ ОБНАРУЖЕНИЯ ФАЙЛА, КАК ЕГО ОСТАНОВИТЬ?
-
     public static File findAbsoluteFile(File dir, String fileName) {
         File result = null;
         try {
@@ -31,11 +29,10 @@ public class Main {
                 //Search sequence monitor
                 System.out.printf("checking: %s, result = %s%n", file.getAbsolutePath(), result);
 
-                if (file.getName().toLowerCase().equals(fileName.toLowerCase()) && result == null) {
-                    result = file.getAbsoluteFile();
-                    //return result;
+                if (file.getName().toLowerCase().equals(fileName.toLowerCase())) {
+                    return file;
                 }
-                if (file.isDirectory() && result == null) {
+                if (file.isDirectory()) {
                     result = findAbsoluteFile(file, fileName);
                     if (result !=null) return result;
                 }
